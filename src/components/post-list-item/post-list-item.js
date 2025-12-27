@@ -1,9 +1,13 @@
 import "./post-list-item.css"
 
-export const PostListItem = () => {
+export const PostListItem = ({label, important = false}) => {
+
+  let classNames = "d-flex justify-content-between app-list-item";
+  important && (classNames += ' important')
+
   return (
-    <li className="d-flex justify-content-between app-list-item">
-      <span className="app-list-item-label">first task</span>
+    <div className={classNames}>
+      <span className="app-list-item-label classNames">{label}</span>
       <div className="d-flex justify-content-center align-items-center">
         <button type="button" className="btn-star btn-sm">
           <i className="fa fa-star"></i>
@@ -13,6 +17,6 @@ export const PostListItem = () => {
         </button>
         <i className="fa fa-heart"></i>
       </div>
-    </li>
+    </div>
   );
 };
