@@ -14,9 +14,14 @@ const App = () => {
     {label: "Learn React", important: true, id: "revsdrvsrvhn"}
 ]
 
+  const totalPosts = 3;
+  const markPosts = 2;
+
   return (
     <div className="app">
-      <AppHeader />
+      <AppHeader text="Evgeniy Acteck" >
+        {totalPosts} записей. Из них отмечено {markPosts}
+      </ AppHeader>
       <div className="d-flex search-panel">
         <SearchPanel />
         <PostStatusFilter />

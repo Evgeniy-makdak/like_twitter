@@ -1,10 +1,10 @@
 import "./app-header.css";
 
-export const AppHeader = () => {
+export const AppHeader = ({text, children}) => {
     return (
         <div className="app-header d-flex">
-            <h1>Acteck</h1>
-            <h2>3 записи, отмечено 1</h2>
+            <h1>{text}</h1>
+            <h2>{children}</h2>
         </div>
     )
 }
