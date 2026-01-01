@@ -20,7 +20,7 @@ const App = () => {
     setData(newData);
   };
 
-  const totalPosts = 3;
+  const totalPosts = data.length;
   const markPosts = 2;
 
   return (
