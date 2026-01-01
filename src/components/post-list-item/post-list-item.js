@@ -4,10 +4,11 @@ import "./post-list-item.css";
 export const PostListItem = ({
   label: initialLabel = " ",
   important: initialImportant = false,
+  onDelete,
 }) => {
   const [like, setLike] = useState(false);
   const [important, setImportant] = useState(initialImportant);
-  const [label, setLabel] = useState(initialLabel);
+  const [label] = useState(initialLabel);
 
   let classNames = "d-flex justify-content-between app-list-item";
   important && (classNames += " important");
@@ -30,7 +31,10 @@ export const PostListItem = ({
         <button type="button" className="btn-star btn-sm" onClick={onImportant}>
           <i className="fa fa-star"></i>
         </button>
-        <button type="button" className="btn-trash btn-sm">
+        <button type="button" 
+        className="btn-trash btn-sm"
+        onClick={onDelete}
+        >
           <i className="fa fa-trash-alt"></i>
         </button>
         <i className="fa fa-heart"></i>

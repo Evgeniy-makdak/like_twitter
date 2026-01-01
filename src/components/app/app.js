@@ -1,3 +1,4 @@
+import {useState } from "react";
 import { AppHeader } from "../app-header/app-header";
 import { PostStatusFilter } from "../post-status-filter/post-status-filter";
 import { SearchPanel } from "../search-panel/search-panel";
@@ -8,11 +9,16 @@ import "./app.css";
 
 const App = () => {
 
-  const data = [
-    {label: "Learn HTML", important: true, id: "revhn"},
-    {label: "Learn Java Script", important: false, id: "trber"},
-    {label: "Learn React", important: true, id: "revsdrvsrvhn"}
-]
+  const [data, setData] = useState([
+    {label: "Learn HTML", important: true, id: "html"},
+    {label: "Learn Java Script", important: false, id: "js"},
+    {label: "Learn React", important: true, id: "react"}
+])
+
+  const deleteItem = (id) => {
+    const newData = data.filter(item => item.id !== id);
+    setData(newData);
+  };
 
   const totalPosts = 3;
   const markPosts = 2;
@@ -26,7 +32,7 @@ const App = () => {
         <SearchPanel />
         <PostStatusFilter />
       </div>
-      <PostList posts={data} />
+      <PostList posts={data} onDelete={deleteItem} />
       <PostAddForm />
     </div>
   );
