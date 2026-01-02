@@ -1,6 +1,6 @@
 import "./post-add-form.css";
 
-export const PostAddForm = () => {
+export const PostAddForm = ({addPost}) => {
     return(
         <form className="d-flex bottom-panel">
             <input
@@ -8,7 +8,14 @@ export const PostAddForm = () => {
                 placeholder="Введите запись..."
                 className="form-control new-post-label"
             />
-            <button type="submit" className="btn btn-outline-secondary">
+            <button
+              type="submit"
+              className="btn btn-outline-secondary"
+              onClick={(e) => {
+                e.preventDefault();
+                addPost();
+              }}
+            >
                 добавить
             </button>
         </form>

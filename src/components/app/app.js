@@ -20,6 +20,16 @@ const App = () => {
     setData(newData);
   };
 
+  const addPost = () => {
+  const newPost = {
+    label: "Learn TypeScript",
+    important: false,
+    id: `${Date.now()}`
+  };
+  const newData = [...data, newPost];
+  setData(newData);
+}
+
   const totalPosts = data.length;
   const markPosts = 2;
 
@@ -33,7 +43,7 @@ const App = () => {
         <PostStatusFilter />
       </div>
       <PostList posts={data} onDelete={deleteItem} />
-      <PostAddForm />
+      <PostAddForm addPost={addPost} />
     </div>
   );
 };
