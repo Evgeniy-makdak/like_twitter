@@ -5,18 +5,14 @@ export const PostListItem = ({
   label: initialLabel = " ",
   important: initialImportant = false,
   onDelete,
+  onToggleImportant,
 }) => {
   const [like, setLike] = useState(false);
-  const [important, setImportant] = useState(initialImportant);
   const [label] = useState(initialLabel);
 
   let classNames = "d-flex justify-content-between app-list-item";
-  important && (classNames += " important");
+  initialImportant && (classNames += " important");
   like && (classNames += " like");
-
-  const onImportant = () => {
-    setImportant(!important);
-  };
 
   const onLike = () => {
     setLike(!like);
@@ -28,7 +24,7 @@ export const PostListItem = ({
         {label}
       </span>
       <div className="d-flex justify-content-center align-items-center">
-        <button type="button" className="btn-star btn-sm" onClick={onImportant}>
+        <button type="button" className="btn-star btn-sm" onClick={onToggleImportant}>
           <i className="fa fa-star"></i>
         </button>
         <button type="button" 
