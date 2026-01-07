@@ -13,22 +13,22 @@ const App = () => {
     {label: "Learn HTML", important: false, id: "html"},
     {label: "Learn Java Script", important: false, id: "js"},
     {label: "Learn React", important: false, id: "react"}
-])
+  ])
 
   const deleteItem = (id) => {
     const newData = data.filter(item => item.id !== id);
     setData(newData);
   };
 
-  const addPost = () => {
-  const newPost = {
-    label: "Learn TypeScript",
-    important: false,
-    id: `${Date.now()}`
-  };
-  const newData = [...data, newPost];
-  setData(newData);
-}
+  const addPost = (text) => {
+    const newPost = {
+      label: text,
+      important: false,
+      id: `${Date.now()}`
+    };
+    const newData = [...data, newPost];
+    setData(newData);
+  }
 
   const toggleImportant = (id) => {
     const newData = data.map(item => {
@@ -47,12 +47,16 @@ const App = () => {
     <div className="app">
       <AppHeader text="Evgeniy Acteck" >
         {totalPosts} записей. Из них важных {markPosts}
-      </ AppHeader>
+      </AppHeader>
       <div className="d-flex search-panel">
         <SearchPanel />
         <PostStatusFilter />
       </div>
-      <PostList posts={data} onDelete={deleteItem} onToggleImportant={toggleImportant} />
+      <PostList 
+        posts={data} 
+        onDelete={deleteItem} 
+        onToggleImportant={toggleImportant} 
+      />
       <PostAddForm addPost={addPost} />
     </div>
   );
